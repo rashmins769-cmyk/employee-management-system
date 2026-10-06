@@ -129,29 +129,29 @@ export const EmployeeModal: React.FC<EmployeeModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
       <div
-        className="w-full max-w-xl glass-surface rounded-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden"
+        className="w-full max-w-xl bg-[#0e1017] rounded-2xl border border-white/[0.12] shadow-[0_24px_70px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.1)] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4.5 border-b border-white/10">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.08] bg-[#11141e]/50">
           <div>
-            <h2 className="text-lg font-bold text-white tracking-tight">
-              {employeeToEdit ? 'Edit Employee Record' : 'Add New Corporate Employee'}
+            <h2 className="text-base font-bold text-white tracking-tight">
+              {employeeToEdit ? 'Edit Employee Record' : 'Create New Personnel Record'}
             </h2>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-[11px] text-slate-400 font-mono mt-0.5">
               {employeeToEdit
-                ? `Updating ID: ${employeeToEdit.id || employeeToEdit._id}`
-                : 'Mongoose schema validation enforced upon submission'}
+                ? `ID: ${employeeToEdit.id || employeeToEdit._id}`
+                : 'MongoDB Schema validation rules enforced'}
             </p>
           </div>
           <button
             onClick={onClose}
             disabled={isSubmitting}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-white/[0.06] transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
@@ -297,29 +297,29 @@ export const EmployeeModal: React.FC<EmployeeModalProps> = ({
           </div>
 
           {/* Form Actions */}
-          <div className="pt-4 flex items-center justify-end gap-3 border-t border-white/10">
+          <div className="pt-4 flex items-center justify-end gap-2.5 border-t border-white/[0.08]">
             <button
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white rounded-lg tactile-button-secondary transition-all"
+              className="px-3.5 py-1.5 text-xs font-mono text-slate-300 hover:text-white rounded-lg raycast-button-secondary transition-all"
             >
-              Cancel
+              Cancel [ESC]
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center gap-2 px-5 py-2 text-sm font-semibold text-white rounded-lg tactile-button-primary disabled:opacity-50"
+              className="flex items-center gap-2 px-4 py-1.5 text-xs font-semibold text-white rounded-lg raycast-button-primary disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>Saving to Database...</span>
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  <span>Writing to MongoDB...</span>
                 </>
               ) : (
                 <>
-                  <CheckCircle className="w-4 h-4" />
-                  <span>{employeeToEdit ? 'Save Changes' : 'Create Record'}</span>
+                  <CheckCircle className="w-3.5 h-3.5" />
+                  <span>{employeeToEdit ? 'Save Changes' : 'Commit Record'}</span>
                 </>
               )}
             </button>

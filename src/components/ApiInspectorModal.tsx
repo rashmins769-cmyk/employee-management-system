@@ -86,31 +86,31 @@ export const ApiInspectorModal: React.FC<ApiInspectorModalProps> = ({ isOpen, on
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
       <div
-        className="w-full max-w-4xl max-h-[90vh] glass-surface rounded-2xl border border-white/10 shadow-2xl flex flex-col overflow-hidden"
+        className="w-full max-w-4xl max-h-[90vh] bg-[#0e1017] rounded-2xl border border-white/[0.12] shadow-[0_24px_70px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-4.5 border-b border-white/10 flex items-center justify-between shrink-0">
+        <div className="px-6 py-4 border-b border-white/[0.08] bg-[#11141e]/50 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-              <Server className="w-5 h-5" />
+            <div className="w-8 h-8 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+              <Server className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-white tracking-tight">
+              <h2 className="text-sm font-bold text-white tracking-tight">
                 REST API Specification & Evaluation Documentation
               </h2>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-[11px] text-slate-400 font-mono mt-0.5">
                 GUPIO Placement Evaluation Test Suite · Express + Mongoose Controller Routes
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-white/5"
+            className="p-1 text-slate-400 hover:text-white rounded hover:bg-white/[0.06]"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 

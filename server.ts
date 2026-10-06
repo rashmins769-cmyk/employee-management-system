@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
-import { connectDB, getDBStatus } from './src/server/config/db.ts';
+import { connectDB, getDBStatus, reconnectDB } from './src/server/config/db.ts';
 import employeeRoutes from './src/server/routes/employeeRoutes.ts';
 import { errorHandler } from './src/server/middleware/errorHandler.ts';
 
@@ -32,6 +32,13 @@ async function startServer() {
       database: getDBStatus(),
       platform: 'GUPIO EMS Platform v2.4',
     });
+  });
+
+  // Dynamic MongoDB Connection Test & Reconnect Endpoint
+  app.post('/api/health/connect', async (req, res) => {
+    const { uri } = req.body || {};
+    const result = await reconnectDB(uri);
+    res.status(200).json(result);
   });
 
   // Mount Employee REST API

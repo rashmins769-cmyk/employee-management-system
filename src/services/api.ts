@@ -117,3 +117,13 @@ export async function getDepartmentStats(): Promise<DepartmentStats> {
 export async function checkSystemHealth(): Promise<any> {
   return request<any>('/health');
 }
+
+/**
+ * Test and reconnect to a MongoDB instance or URI
+ */
+export async function connectMongoDB(uri?: string): Promise<{ success: boolean; message: string; status: any }> {
+  return request<{ success: boolean; message: string; status: any }>('/health/connect', {
+    method: 'POST',
+    body: JSON.stringify({ uri }),
+  });
+}

@@ -553,3 +553,30 @@ export async function getDepartmentStats(_req: Request, res: Response, next: Nex
 export function resetSampleData(): void {
   fallbackEmployeesStore = [...INITIAL_SEED_EMPLOYEES];
 }
+
+/**
+ * Seed initial records into MongoDB if collection is empty
+ */
+export async function seedInitialDataIfEmpty(): Promise<void> {
+  try {
+    if (isLiveMongo()) {
+      const count = await Employee.countDocuments();
+      if (count === 0) {
+        console.log('🌱 [MongoDB] Seeding initial corporate records into MongoDB collection...');
+        await Employee.insertMany(
+          INITIAL_SEED_EMPLOYEES.map((emp) => ({
+            name: emp.name,
+            email: emp.email,
+            department: emp.department,
+            designation: emp.designation,
+            status: emp.status as any,
+          }))
+        );
+        console.log('✅ [MongoDB] Successfully seeded 6 initial corporate employees into MongoDB.');
+      }
+    }
+  } catch (err: any) {
+    console.error('Seed error:', err.message);
+  }
+}
+
