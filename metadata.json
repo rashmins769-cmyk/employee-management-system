@@ -1,0 +1,6 @@
+{
+  "name": "GUPIO Employee Management System",
+  "description": "Enterprise-grade Full Stack Employee Management System with Express, Mongoose, and Tailwind CSS featuring tactile elevation and CRUD dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
